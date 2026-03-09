@@ -1,10 +1,9 @@
 name: docker build & push
 on:
   workflow_dispatch:
-jobs:
-  runs-on: ubuntu-latest
-    
+jobs:    
   deploy:
+    runs-on: ubuntu-latest
     env:
        OCKERHUB_USER : ${{ vars.DOCKERHUB_USER }}
        DOCKER_TAG: ${{ github.sha}}
