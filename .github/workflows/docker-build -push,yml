@@ -2,9 +2,12 @@ name: docker build & push
 on:
   workflow_dispatch:
 job:
-  env:
+  
     
   deploy:
+    env:
+       OCKERHUB_USER : ${{ vars.DOCKERHUB_USER }}
+       DOCKER_TAG: ${{ github.sha}}
     steps:
       - name: checkout_code
         uses: actions/checkout@v4
