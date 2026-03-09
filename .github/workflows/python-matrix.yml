@@ -15,5 +15,5 @@ name: python-matrix
           - name: install dependencies
             run: pip install -r  requirements.txt
           - name: lint
-          - uses: flask8 app.py
+            uses: flask8 app.py
             
