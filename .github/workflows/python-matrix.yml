@@ -2,18 +2,26 @@ name: python-matrix
 on:
   push:
     branches: [main]
-  jobs:
-    validation:
-      runs-on: ubuntu-latest
-      steps:
-        - name: checkout code
-          uses: actions/checkout@v4
-        - name: setup python
-          uses: actions/setup-python@v5
-          with:
-            python-version: "3.9"
-        - name: install dependencies
-          run: pip install -r  requirements.txt
-        - name: lint
-          runs: flake8 app.py
-              
+jobs:
+  strategy:
+    
+    fail-fast: false
+    matrix:
+      python-version: ["3.9", "3.10", "3.11", "3.12", "3.13"]
+    
+  validation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v4
+      - name: setup python ${{matrix.python-version}}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{matrix.python-version}}
+        with:
+          python-version: "3.9"
+      - name: install dependencies
+        run: pip install -r  requirements.txt
+      - name: lint
+        runs: flake8 app.py
+            
