@@ -3,7 +3,7 @@ on:
   push:
     branches: [main]
   jobs:
-    lint and test
+    validation:
       runs-on: ubuntu-latest
       steps:
         - name: checkout code
@@ -16,4 +16,4 @@ on:
           run: pip install -r  requirements.txt
         - name: lint
           uses: flask8 app.py
-            
+              
