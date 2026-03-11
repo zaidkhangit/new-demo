@@ -9,4 +9,7 @@ jobs:
   secrects-scan:
     name: secrects scan
     uses: ./.github/workflows/secrects-scan.yml
+  docker-scan:
+    name: docker-scan
+    uses: ./.github/workflows/docker-lint.yml
  
