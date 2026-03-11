@@ -1,6 +1,6 @@
 name: Docker Build & Push 
 
-on: 
+on:
   workflow_call:
     secrets:
       DOCKER_PASSWORD:
