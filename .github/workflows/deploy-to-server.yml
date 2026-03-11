@@ -8,6 +8,6 @@ jobs:
       - name: ssh to pro server
         uses: appleboy/ssh-action@v1.0.3
         with:
-          host: ${{ secrets.
+          host: ${{ secrets.SSH_HOST}}
           username: ${{ secrets.
           key: ${{ secrets.
