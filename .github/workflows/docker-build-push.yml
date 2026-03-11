@@ -3,7 +3,7 @@ name: Docker Build & Push
 on: 
   workflow_call:
     secrets:
-      MY_SECRET:
+      DOCKER_PASSWORD:
         required: true
 jobs:
     build-and-push:
