@@ -5,9 +5,13 @@ jobs:
   deploying:
     runs-on: ubuntu-latest
     steps:
+       
       - name: ssh to pro server
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.SSH_HOST}}
-          username: ${{ secrets.
-          key: ${{ secrets.
+          username: ${{ secrets.SSH_USERNAME}}
+          key: ${{ secrets.key}}
+          script:  |
+            echo " start deploy"
+          
