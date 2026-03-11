@@ -1,7 +1,11 @@
 name: Docker Build & Push 
 
 on: 
-  workflow_call: 
+  workflow_call:
+  
+permissions:
+  contents: write
+  packages: write
 
 jobs:
     build-and-push:
