@@ -2,11 +2,11 @@ name: devsecops end too end pipeline
 on:
   workflow_dispatch:
 jobs:
-  deploy:
     code-quality:
       uses:  ./.github/workflows/code-quality.yml
     secrets-scan:
-        uses:   ./.github/workflows/secrets-scan.yml
+      uses:   ./.github/workflows/secrets-scan.yml
     docker-scan:
-        uses:  ./.github/workflows/
-        uses:  ./.github/workflows/
+        uses:  ./.github/workflows/docker-lint.yml
+    dependencies-scan:
+        uses:  ./.github/workflows/dependencies-scan.yml
