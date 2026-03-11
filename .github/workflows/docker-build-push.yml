@@ -19,6 +19,7 @@ jobs:
               with:
                 username: ${{ vars.DOCKERUSER }}
                 password: ${{ secrets.PASSWORD }}
+                passwords: ${{ secrets.PASSWORD }}
                 
             - name: Build & Push to Docker Hub
               uses: docker/build-push-action@v6
