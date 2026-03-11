@@ -4,7 +4,7 @@ on:
   workflow_call:
    secrets:
       MY_SECRET:
-        required: true
+          required: true
 jobs:
     build-and-push:
         runs-on: ubuntu-latest
