@@ -15,4 +15,8 @@ jobs:
   dependencies-scan:
     name: dependencies scan
     uses: ./.github/workflows/dependencies-scan.yml
+  build:
+    needs: [code-quality, secrects-scan, dependencies-scan, docker-scan]
+    name: docker build
+    uses: ./.github/workflows/docker-build-push.yml
  
