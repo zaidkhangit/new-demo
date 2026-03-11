@@ -6,7 +6,7 @@ jobs:
   code-quality:
     name: code scan
     uses: ./.github/workflows/code-quality.yml
-  secrets-scan:
-    name: secrets scan
-    uses: ./.github/workflows/secrets-scan.yml
+  secrects-scan:
+    name: secrects scan
+    uses: ./.github/workflows/secrects-scan.yml
  
