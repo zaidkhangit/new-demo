@@ -1,0 +1,13 @@
+name: deploy to server
+on:
+  workflow_call:
+jobs:
+  deploying:
+    runs-on: ubuntu-latest
+    steps:
+      - name: ssh to pro server
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.
+          username: ${{ secrets.
+          key: ${{ secrets.
