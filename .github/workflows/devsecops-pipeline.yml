@@ -23,5 +23,5 @@ jobs:
     name: docker build
     uses: ./.github/workflows/docker-build-push.yml
     secrets:
-      MY_SECRET: ${{ secrets.DOCKER_PASSWORD }}
+      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
  
