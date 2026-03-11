@@ -2,6 +2,9 @@ name: devsecops end too end pipeline
 on:
   push:
     branches: [main]
+permissions:
+  contents: write
+  packages: write
 jobs:
   code-quality:
     name: code scan
