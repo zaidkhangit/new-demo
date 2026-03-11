@@ -3,8 +3,8 @@ name: Docker Build & Push
 on: 
   workflow_call:
     secrets:
-          DOCKER_PASSWORD:
-            required: true
+      DOCKER_PASSWORD:
+        required: true
 jobs:
     build-and-push:
         runs-on: ubuntu-latest
