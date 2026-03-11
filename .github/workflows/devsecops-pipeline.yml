@@ -3,7 +3,10 @@ on:
   workflow_dispatch:
 jobs:
   deploy:
-        uses:  ./.github/workflows/code-quality.yml
-        uses:   ./.github/workflows/
+    code-quality:
+      uses:  ./.github/workflows/code-quality.yml
+    secrets-scan:
+        uses:   ./.github/workflows/secrets-scan.yml
+    docker-scan:
         uses:  ./.github/workflows/
         uses:  ./.github/workflows/
