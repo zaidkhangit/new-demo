@@ -4,5 +4,6 @@ on:
 jobs:
   code-quality:
     uses: ./.github/workflows/code-quality.yml
-
+  secrets-scan:
+    uses: ./.github/workflows/secrets-scan.yml
  
