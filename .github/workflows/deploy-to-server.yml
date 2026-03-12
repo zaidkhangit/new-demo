@@ -29,6 +29,7 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ vars.DOCKERUSER}}
           key: ${{ secrets.key }}
+          secrets: inherit
           source: docker-compose.yml
           target: ~/devops  
           
