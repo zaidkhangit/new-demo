@@ -27,7 +27,7 @@ jobs:
         uses: appleboy/scp-action@v1
         with:
           host: ${{ secrets.SSH_HOST }}
-          username: ${{ vars.DOCKERUSER}}
+          username: ${{ vars.DOCKERUSER }}
           key: ${{ secrets.KEY }}
           secrets: inherit
           source: docker-compose.yml
