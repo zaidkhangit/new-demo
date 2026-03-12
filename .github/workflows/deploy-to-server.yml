@@ -10,8 +10,8 @@ jobs:
     steps:
       - name: checkout code
         uses: actions/checkout@v4
-      - name: copy docker-compose file
-        uses: appleboy/scp-action@v1
+      - name: ssh to pro server
+        uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ vars.SSH_USERNAME }}
@@ -21,7 +21,7 @@ jobs:
             mkdir -p devops
             sudo apt-get update && sudo apt-get install docker.io docker-compose-v2 -y
             sudo usermod -aG docker $USER
-         
+            
       - name: Copy the docker-compose file
         uses: appleboy/scp-action@v1
         with:
@@ -29,14 +29,14 @@ jobs:
           username: ${{ vars.DOCKER_USER}}
           key: ${{ secrets.key }}
           source: docker-compose.yml
-          target: ~/devops    
-      - name: ssh to pro server
-        uses: appleboy/ssh-action@v1.0.3
+          target: ~/devops  
+          
+      - name: copy docker-compose file
+        uses: appleboy/scp-action@v1
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ vars.SSH_USERNAME }}
-          key: ${{ secrets.key}}
-          
+          key: ${{ secrets.key}}    
           script:  |
             echo " start deploy"
             export DOCKERUSER=${{ vars.DOCKERUSER }}
