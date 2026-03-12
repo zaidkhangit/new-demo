@@ -28,4 +28,4 @@ jobs:
                 push: true
                 tags: |
                     ${{ vars.DOCKERUSER }}/github-actions-app:${{ github.ref_name }}
-                   
+                    ${{ vars.DOCKERUSER }}/github-actions-app:${{ github.sha }}
