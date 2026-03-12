@@ -26,7 +26,7 @@ jobs:
             mkdir -p devops
             sudo apt-get update && sudo apt-get install docker.io docker-compose-v2 -y
             export DOCKERUSER=${{ vars.DOCKERUSER }}
-            DOCKER_TAG=zaidaws/github-action-app:main 
+            DOCKER_TAG=${{ github.ref_name }}
             export DOCKER_PASSWORD=${{ secrets.DOCKER_PASSWORD }}
             echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ vars.DOCKERUSER }} --password-stdin
             cd ~/devops && docker compose down && docker compose up -d --build --force-recreate --pull always
