@@ -10,7 +10,8 @@ jobs:
     steps:
       - name: checkout code
         uses: actions/checkout@v4
-      - name: ssh to pro server
+        
+      - name: ssh to pro server & create app
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.SSH_HOST }}
@@ -18,9 +19,9 @@ jobs:
           key: ${{ secrets.key}}
           scripts: |
             echo " start deploy"
-            mkdir -p devops
             sudo apt-get update && sudo apt-get install docker.io docker-compose-v2 -y
             sudo usermod -aG docker $USER
+            mkdir -p devops
             
       - name: Copy the docker-compose file
         uses: appleboy/scp-action@v1
@@ -31,7 +32,7 @@ jobs:
           source: docker-compose.yml
           target: ~/devops  
           
-      - name: copy docker-compose file
+      - name: SH to prod derver & run app
         uses: appleboy/scp-action@v1
         with:
           host: ${{ secrets.SSH_HOST }}
