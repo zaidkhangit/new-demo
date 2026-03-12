@@ -11,10 +11,9 @@ jobs:
         with:
           username: ${{ vars.DOCKERUSER }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-      - name: trivy scan
-        scan-type: 'image'
-        image-ref: '${{ vars.DOCKERUSER }}/github-actions-app:${{ github.ref }}
+      - name: trivy scan 
         uses: aquasecurity/trivy-action@master
         with:
-          severity: 'CRITICAL'
+          image-ref: '${{ vars.DOCKERUSER }}/github-actions-app:${{ github.ref }}'
+          severity: 'CRITICAL, HIGH'
           exit-code: '1'
