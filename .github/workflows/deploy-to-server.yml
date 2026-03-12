@@ -5,7 +5,7 @@ jobs:
   deploying:
     runs-on: ubuntu-latest
     env:
-      DOCKERHUB_USER: ${{ vars.DOCKERHUB_USER }}
+      DOCKERHUB_USER: ${{ vars.DOCKERUSER }}
       DOCKER_TAG: ${{ github.sha }} 
     steps:
       - name: checkout code
@@ -26,7 +26,7 @@ jobs:
         uses: appleboy/scp-action@v1
         with:
           host: ${{ secrets.SSH_HOST }}
-          username: ${{ vars.DOCKER_USER}}
+          username: ${{ vars.DOCKERUSER}}
           key: ${{ secrets.key }}
           source: docker-compose.yml
           target: ~/devops  
