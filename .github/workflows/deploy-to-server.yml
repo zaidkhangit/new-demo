@@ -25,8 +25,7 @@ jobs:
             echo " start deploy"
             mkdir -p devops
             sudo apt-get update && sudo apt-get install docker.io docker-compose-v2 -y
-            sudo usermod -aG docker $USER && newgrp docker
-            export DOCKERUSER=${{ vars.DOCKERUSER }}
-            export DOCKER_TAG=${{ github.ref_name }}
+            DOCKERUSER=${{ vars.DOCKERUSER }}
+            DOCKER_TAG=${{ github.ref_name }}
             echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ vars.DOCKERUSER }} --password-stdin
             cd ~/devops && docker compose down && docker compose up -d --build --force-recreate --pull always
