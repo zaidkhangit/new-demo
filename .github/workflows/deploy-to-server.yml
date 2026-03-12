@@ -32,7 +32,7 @@ jobs:
           target: ~/devops
     
       - name: SH to prod derver & run app
-        uses: appleboy/shh-action@v1.0.3
+        uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ vars.SSH_USERNAME }}
