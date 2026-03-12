@@ -24,7 +24,7 @@ jobs:
           script:  |
             echo " start deploy"
             mkdir -p devops
-            sudo apt-get install docker.io docker-compose-v2 -y
+            sudo apt-get update && sudo apt-get install docker.io docker-compose-v2 -y
             sudo usermod -aG docker $USER && newgrp docker
             export DOCKERUSER=${{ vars.DOCKERUSER }}
             export DOCOER_TAG=${{ github.event.workflow_run.head_sha }}
