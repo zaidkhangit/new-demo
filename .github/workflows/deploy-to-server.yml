@@ -27,6 +27,6 @@ jobs:
             sudo apt-get update && sudo apt-get install docker.io docker-compose-v2 -y
             sudo usermod -aG docker $USER && newgrp docker
             export DOCKERUSER=${{ vars.DOCKERUSER }}
-            export DOCOER_TAG=${{ github.event.workflow_run.head_sha }}
+            export DOCKER_TAG=${{ github.event.workflow_run.head_sha }}
             echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKERUSER }} --password-stdin
-            cd ~/devops $$ docker compose down && docker compose up -d -build --force-recreate --pull always
+            cd ~/devops && docker compose down && docker compose up -d -build --force-recreate --pull always
