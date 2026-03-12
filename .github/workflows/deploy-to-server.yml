@@ -5,7 +5,7 @@ jobs:
   deploying:
     runs-on: ubuntu-latest
     env:
-      DOCKERUSER: ${{ vars.DOCKERUSER }}
+      DOCKERHUB_USER: ${{ vars.DOCKERUSER }}
       DOCKER_TAG: ${{ github.sha }} 
     steps:
       - name: checkout code
@@ -39,7 +39,7 @@ jobs:
           key: ${{ secrets.KEY }}    
           script:  |
             echo " start deploy"
-            export DOCKERUSER=${{ vars.DOCKERUSER }}
+            export DOCKERHUB_USER=${{ vars.DOCKERUSER }}
             export DOCKER_TAG=${{ github.event.workflow_run.head_sha }}
             export DOCKER_TAG=${{ github.sha }}
             echo ${{ secrets.DOCKER_PASSWORD }} | docker login --username ${{ vars.DOCKERUSER }} --password-stdin
