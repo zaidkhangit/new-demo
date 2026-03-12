@@ -22,9 +22,17 @@ jobs:
             sudo apt-get update && sudo apt-get install docker.io docker-compose-v2 -y
             sudo usermod -aG docker $USER
             mkdir -p devops
-          
-      - name: SH to prod derver & run app
+      - name: Copy docker-compose file
         uses: appleboy/scp-action@v1
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ vars.SSH_USERNAME }}
+          key: ${{ secrets.KEY }}
+          source: ./docker-compose.yml
+          target: ~/devops
+    
+      - name: SH to prod derver & run app
+        uses: appleboy/shh-action@v1
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ vars.SSH_USERNAME }}
