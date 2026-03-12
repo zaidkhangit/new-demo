@@ -16,19 +16,29 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ vars.SSH_USERNAME }}
           key: ${{ secrets.key}}
+          scripts: |
+            echo " start deploy"
+            mkdir -p devops
+            sudo apt-get update && sudo apt-get install docker.io docker-compose-v2 -y
+            sudo usermod -aG docker $USER
+         
+      - name: Copy the docker-compose file
+        uses: appleboy/scp-action@v1
+        with:
+          host: ${{ secrets.EC2_SSH_HOST }}
+          username: ${{ secrets.EC2_SSH_USER }}
+          key: ${{ secrets.EC2_SSH_PRIVATE_KEY }}
           source: docker-compose.yml
-          target: ~/devops
+          target: ~/devops    
       - name: ssh to pro server
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ vars.SSH_USERNAME }}
           key: ${{ secrets.key}}
+          
           script:  |
             echo " start deploy"
-            mkdir -p devops
-            sudo apt-get update && sudo apt-get install docker.io docker-compose-v2 -y
-            sudo usermod -aG docker $USER
             export DOCKERUSER=${{ vars.DOCKERUSER }}
             DOCKER_TAG=${{ github.sha}}
             echo ${{ github.sha }}
