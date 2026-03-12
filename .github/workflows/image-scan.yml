@@ -12,7 +12,7 @@ jobs:
           username: ${{ vars.DOCKERUSER }}
           password: ${{ secrets.PASSWORD }}
       - name: trivy scan
-        uses: aquasecurity/trivy-actions@0.33.1
+        uses: aquasecurity/trivy-action@0.33.1
         with:
           severity: 'CRITICAL'
           exit-code: '1'
