@@ -30,8 +30,7 @@ jobs:
           username: ${{ vars.DOCKERUSER }}
           key: ${{ secrets.KEY }}
           secrets: inherit
-          source: docker-compose.yml
-          target: ~/devops  
+         
           
       - name: SH to prod derver & run app
         uses: appleboy/scp-action@v1
