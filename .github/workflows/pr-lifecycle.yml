@@ -1,0 +1,19 @@
+name: pryml
+on: 
+  pull_request: 
+    types: [ opened, synchronize, reopened, closed]
+jobs:
+  pr-info:
+    runs-on: ubuntu-latest
+    steps:
+      - name: print event type
+        run: echo "eventtype=${{ github.event.action }}"
+      - name: print p title
+        run: echo "prtype= ${{ github.event.pull_request.title }}"
+      - name: print pr uthor
+        run: echo "prauthor= ${{ github.event.pull_request.user.login }}"
+      - name: source nad target
+        run: echo "sourceandtarget= ${{  github.event.pull_request.head.ref }} -> Target branch= ${{ github.event.pull_request.base.ref }}"
+      - name: run on pr merge
+        if: github.event.action == 'closed' && github.event.pull_request.merged == true
+        run: echo "prmerged"
