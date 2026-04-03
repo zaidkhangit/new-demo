@@ -3,7 +3,7 @@ on:
   workflow_call:
 jobs:
   deploying:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     env:
       DOCKERHUB_USER: ${{ vars.DOCKERUSER }}
       DOCKER_TAG: ${{ github.sha }} 
